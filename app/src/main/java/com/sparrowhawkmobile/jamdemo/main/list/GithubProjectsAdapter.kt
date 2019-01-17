@@ -1,4 +1,4 @@
-package com.sparrowhawkmobile.jamdemo.main
+package com.sparrowhawkmobile.jamdemo.main.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

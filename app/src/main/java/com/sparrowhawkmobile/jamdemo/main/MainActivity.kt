@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sparrowhawkmobile.jamdemo.R
+import com.sparrowhawkmobile.jamdemo.main.list.GithubProjectsAdapter
 import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoResult
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
