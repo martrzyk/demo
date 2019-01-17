@@ -1,9 +1,13 @@
-package com.sparrowhawkmobile.jamdemo
+package com.sparrowhawkmobile.jamdemo.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoResult
+import com.sparrowhawkmobile.jamdemo.R
+import com.sparrowhawkmobile.jamdemo.api.GithubApiManager
+import com.sparrowhawkmobile.jamdemo.utils.addTo
+import com.sparrowhawkmobile.jamdemo.utils.applyIOSubscribeMainThreadObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*

@@ -1,5 +1,6 @@
-package com.sparrowhawkmobile.jamdemo
+package com.sparrowhawkmobile.jamdemo.api
 
+import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoResult
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

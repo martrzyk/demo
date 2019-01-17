@@ -1,9 +1,12 @@
-package com.sparrowhawkmobile.jamdemo
+package com.sparrowhawkmobile.jamdemo.main
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoItem
+import com.sparrowhawkmobile.jamdemo.R
+import com.sparrowhawkmobile.jamdemo.utils.inflate
 import kotlinx.android.synthetic.main.simple_item.view.*
 
 

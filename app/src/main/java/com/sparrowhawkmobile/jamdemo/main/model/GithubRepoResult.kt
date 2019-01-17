@@ -1,4 +1,4 @@
-package com.sparrowhawkmobile.jamdemo
+package com.sparrowhawkmobile.jamdemo.main.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -12,6 +12,14 @@ data class GithubRepoResult(
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GithubRepoItem(
-    val id: Long,
-    val name: String
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("name") val name: String,
+    @JsonProperty("size") val repoSize: Int,
+    @JsonProperty("owner") val owner: GithubRepoItemOwner
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class GithubRepoItemOwner(
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("login") val login: String
 )
