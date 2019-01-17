@@ -3,51 +3,41 @@ package com.sparrowhawkmobile.jamdemo.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoResult
 import com.sparrowhawkmobile.jamdemo.R
-import com.sparrowhawkmobile.jamdemo.api.GithubApiManager
-import com.sparrowhawkmobile.jamdemo.utils.addTo
-import com.sparrowhawkmobile.jamdemo.utils.applyIOSubscribeMainThreadObserver
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.subscribeBy
+import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoResult
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainActivityView {
 
-    private lateinit var disposables: CompositeDisposable
+    private val presenter: MainActivityPresenter by lazy { MainActivityPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
-        createAdapter()
+        initUI()
+        presenter.onInit()
     }
 
-    private fun createAdapter() {
+    private fun initUI() {
+        setSupportActionBar(toolbar)
+        initRecycler()
+    }
+
+    private fun initRecycler() {
         main_list_recycler_view.apply {
             adapter = GithubProjectsAdapter()
             layoutManager = LinearLayoutManager(context)
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        disposables = CompositeDisposable()
-        testingApi()
-    }
-
-    private fun testingApi() {
-        GithubApiManager.INSTANCE
-            .getGithubApiClient()
-            .getRepositoriesByQuery("tetris")
-            .applyIOSubscribeMainThreadObserver()
-            .subscribeBy(onError = { it.printStackTrace() }, onSuccess = { updateList(it) })
-            .addTo(disposables)
-    }
-
-    private fun updateList(it: GithubRepoResult) {
+    override fun updateList(it: GithubRepoResult) {
         (main_list_recycler_view.adapter as GithubProjectsAdapter).updateItems(it.items)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 }
