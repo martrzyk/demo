@@ -10,5 +10,5 @@ interface GithubApi {
     @GET("search/repositories")
     fun getRepositoriesByQuery(
         @Query("q") queryText: String
-    ): Single<Any>
+    ): Single<GithubRepoResult>
 }
