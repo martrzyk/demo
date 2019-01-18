@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">jamdemo</string>
     <string name="action_settings">Settings</string>
+    <string name="name">NAME: </string>
+    <string name="login">LOGIN:</string>
+    <string name="size_of_repo">SIZE OF REPO:</string>
+    <string name="search">Search</string>
 </resources>
