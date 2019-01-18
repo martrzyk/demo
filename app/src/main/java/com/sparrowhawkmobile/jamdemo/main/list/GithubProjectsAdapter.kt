@@ -1,13 +1,7 @@
 package com.sparrowhawkmobile.jamdemo.main.list
 
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.sparrowhawkmobile.jamdemo.main.model.GithubRepoItem
-import com.sparrowhawkmobile.jamdemo.R
-import com.sparrowhawkmobile.jamdemo.utils.inflate
-import kotlinx.android.synthetic.main.simple_item.view.*
 
 
 class GithubProjectsAdapter : ListDelegationAdapter<MutableList<GithubRepoItem>>() {
@@ -23,18 +17,3 @@ class GithubProjectsAdapter : ListDelegationAdapter<MutableList<GithubRepoItem>>
     }
 }
 
-class GithubProjectsDelagate : AdapterDelegate<MutableList<GithubRepoItem>>() {
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = GithubProjectHolder(parent)
-
-    override fun isForViewType(items: MutableList<GithubRepoItem>, position: Int): Boolean = true
-
-    override fun onBindViewHolder(items: MutableList<GithubRepoItem>, position: Int, holder: RecyclerView.ViewHolder, payloads: MutableList<Any>) {
-        with(holder as GithubProjectHolder) {
-            val item = items[position]
-            itemView.text.text = item.name
-        }
-    }
-
-    inner class GithubProjectHolder(itemView: ViewGroup) :
-        RecyclerView.ViewHolder(itemView.inflate(R.layout.simple_item))
-}

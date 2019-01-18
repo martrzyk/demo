@@ -32,6 +32,13 @@ class MainActivityPresenter(private val view: MainActivityView) {
         disposables.clear()
     }
 
+    fun filterByString(query: String?) {
+        GetRepositoriesInteractor()
+            .execute(query ?: defaultQuery)
+            .subscribeBy(onError = this::onDownloadError, onSuccess = this::onDownloadSuccess)
+            .addTo(disposables)
+    }
+
     companion object {
         private const val defaultQuery = "tetris"
     }

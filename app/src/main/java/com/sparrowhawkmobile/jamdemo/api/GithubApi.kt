@@ -10,6 +10,7 @@ interface GithubApi {
 
     @GET("search/repositories")
     fun getRepositoriesByQuery(
-        @Query("q") queryText: String
+        @Query("q") queryText: String,
+        @Query("per_page") perPage: Int = 100
     ): Single<GithubRepoResult>
 }

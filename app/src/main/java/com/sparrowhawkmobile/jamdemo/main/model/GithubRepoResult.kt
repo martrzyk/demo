@@ -15,7 +15,8 @@ data class GithubRepoItem(
     @JsonProperty("id") val id: Long,
     @JsonProperty("name") val name: String,
     @JsonProperty("size") val repoSize: Int,
-    @JsonProperty("owner") val owner: GithubRepoItemOwner
+    @JsonProperty("owner") val owner: GithubRepoItemOwner,
+    @JsonProperty("has_wiki") val hasWiki: Boolean
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
